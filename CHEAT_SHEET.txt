@@ -1,0 +1,183 @@
+================================================================================
+                      CONTEXTSYNTH CHEAT SHEET
+               Instant Context Summarizer for Any File or Project
+================================================================================
+
+QUICK REFERENCE
+--------------------------------------------------------------------------------
+
+  SUMMARIZE PROJECT:
+    python contextsynth.py project .
+    python contextsynth.py project ./my-app
+    python contextsynth.py project . --format json -o context.json
+
+  SUMMARIZE FILE:
+    python contextsynth.py file src/app.py
+    python contextsynth.py file ./index.js --format json
+
+  SUMMARIZE FOLDER:
+    python contextsynth.py folder src/components
+    python contextsynth.py folder ./lib --format text
+
+--------------------------------------------------------------------------------
+CLI COMMANDS
+--------------------------------------------------------------------------------
+
+  project [PATH] [OPTIONS]
+    Summarize a project
+    
+    Options:
+      --format, -f     markdown | json | text (default: markdown)
+      --detail, -d     brief | standard | detailed (default: standard)
+      --output, -o     Save to file
+    
+    Examples:
+      python contextsynth.py project .
+      python contextsynth.py project ./app --detail detailed
+      python contextsynth.py project . -f json -o summary.json
+
+  file <PATH> [OPTIONS]
+    Summarize a single file
+    
+    Examples:
+      python contextsynth.py file main.py
+      python contextsynth.py file src/App.tsx --format json
+
+  folder <PATH> [OPTIONS]
+    Summarize a folder
+    
+    Examples:
+      python contextsynth.py folder src/
+      python contextsynth.py folder ./components -f text
+
+--------------------------------------------------------------------------------
+DETAIL LEVELS
+--------------------------------------------------------------------------------
+
+  brief       - One-liners, minimal detail
+  standard    - Key points, moderate detail (default)
+  detailed    - Full analysis, all elements
+
+  Usage:
+    python contextsynth.py project . --detail brief
+    python contextsynth.py project . --detail detailed
+
+--------------------------------------------------------------------------------
+OUTPUT FORMATS
+--------------------------------------------------------------------------------
+
+  markdown    - Rich formatting, good for docs (default)
+  json        - Structured data, good for automation
+  text        - Plain text, good for terminal
+
+  Usage:
+    python contextsynth.py project . --format markdown
+    python contextsynth.py project . --format json
+    python contextsynth.py project . --format text
+
+--------------------------------------------------------------------------------
+PYTHON API
+--------------------------------------------------------------------------------
+
+  BASIC USAGE:
+    from contextsynth import ContextSynth
+    from pathlib import Path
+    
+    synth = ContextSynth()
+    summary = synth.summarize_project(Path("."))
+    print(synth.format_markdown(summary))
+
+  WITH DETAIL LEVEL:
+    from contextsynth import ContextSynth, DetailLevel
+    
+    synth = ContextSynth(DetailLevel.DETAILED)
+    summary = synth.summarize_file(Path("app.py"))
+    print(synth.format_json(summary))
+
+  ACCESS SUMMARY DATA:
+    summary = synth.summarize_project(Path("."))
+    
+    print(summary.name)           # Project name
+    print(summary.version)        # Version
+    print(summary.file_count)     # Number of files
+    print(summary.total_lines)    # Total lines of code
+    print(summary.dependencies)   # List of dependencies
+    print(summary.todos)          # List of TODOs
+    print(summary.blockers)       # List of blockers
+
+--------------------------------------------------------------------------------
+SUPPORTED PROJECT TYPES
+--------------------------------------------------------------------------------
+
+  Type          Detection File        Key Dependencies
+  ----          --------------        ----------------
+  node          package.json          Node.js, NPM
+  python        requirements.txt      Python, pip
+  rust          Cargo.toml            Rust, Cargo
+  tauri         src-tauri/tauri.conf  Tauri
+  generic       (none)                Unknown
+
+--------------------------------------------------------------------------------
+SUPPORTED FILE TYPES
+--------------------------------------------------------------------------------
+
+  Extension     Type          Analysis
+  ---------     ----          --------
+  .py           python        Functions, classes, imports
+  .js, .jsx     javascript    Functions, classes, imports
+  .ts, .tsx     typescript    Functions, classes, imports
+  .json         json          Key structure
+  .md           markdown      Headers, links
+  .yaml, .yml   yaml          Key structure
+  .rs           rust          Functions, structs
+  .go           go            Functions, structs
+
+--------------------------------------------------------------------------------
+EXTRACTED INFORMATION
+--------------------------------------------------------------------------------
+
+  For Files:
+    - Key elements (functions, classes)
+    - Imports/dependencies
+    - TODOs (# TODO: ...)
+    - Blockers (# FIXME: ..., # BUG: ...)
+    - Line count, size
+
+  For Projects:
+    - Project type and version
+    - Main technologies
+    - All dependencies
+    - Entry points
+    - Recent git changes
+    - Aggregated TODOs and blockers
+
+--------------------------------------------------------------------------------
+COMMON PATTERNS
+--------------------------------------------------------------------------------
+
+  SESSION START:
+    python contextsynth.py project . > SESSION_CONTEXT.md
+
+  AGENT HANDOFF:
+    python contextsynth.py project . --detail detailed -o HANDOFF.md
+
+  CI/CD:
+    python contextsynth.py project . --format json -o context.json
+
+  QUICK CHECK:
+    python contextsynth.py project . --format text --detail brief
+
+--------------------------------------------------------------------------------
+VERSION INFO
+--------------------------------------------------------------------------------
+
+  Tool:       ContextSynth
+  Version:    1.0.0
+  Python:     3.8+
+  Deps:       Zero (standard library only)
+  Author:     ATLAS (Team Brain)
+  Owner:      Logan Smith / Metaphy LLC
+
+================================================================================
+                       Instant context. Zero friction.
+================================================================================

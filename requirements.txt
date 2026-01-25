@@ -1,0 +1,21 @@
+# ContextSynth Requirements
+# =========================
+# This tool uses ONLY Python standard library!
+# No external dependencies required.
+#
+# Minimum Python version: 3.8+
+#
+# Standard library modules used:
+# - os, pathlib (file operations)
+# - json (data export)
+# - re (pattern matching)
+# - ast (Python code analysis)
+# - dataclasses (data structures)
+# - typing (type hints)
+# - enum (enumerations)
+# - logging (debug output)
+# - hashlib (file hashing)
+# - datetime (timestamps)
+#
+# For development/testing:
+# pytest>=7.0.0
