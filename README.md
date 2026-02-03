@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9a95ddfa-fa9c-4e4e-a515-306fb2c63d6b" />
+
 # 📋 ContextSynth
 
 ## Instant Context Summarizer for Any File or Project
@@ -535,6 +537,9 @@ python contextsynth.py project . --detail detailed
 MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/6a069620-df7e-4b38-a98a-d6c61437847d" />
+
 
 ## 👏 Credits
 
